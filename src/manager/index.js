@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom'
 import { Table,
     Header,
     HeaderRow,
@@ -17,6 +18,8 @@ function Manager() {
     }
     const [rowsData, setRowsData] = React.useState(initialList);
 
+    console.log(rowsData);
+
     const handleSearch = (event) => {
         setSearch(event.target.value);
     };
@@ -27,12 +30,12 @@ function Manager() {
         ),
     };
     
-    const addNew = () => {
-        window.open("new");
-        const newList = rowsData.concat({"website": "nothing.com", "username":"jhandei123@gmail.com", "password": "something4"});
-        setRowsData(newList);
-        localStorage.setItem("data", JSON.stringify(newList));
-    }
+    // const addNew = () => {
+    //     window.open("new");
+        // const newList = rowsData.concat({"website": "nothing.com", "username":"jhandei123@gmail.com", "password": "something4"});
+        // setRowsData(newList);
+        // localStorage.setItem("data", JSON.stringify(newList));
+    // }
 
     const clearCache = () => {
         localStorage.clear()
@@ -44,7 +47,13 @@ function Manager() {
             <label htmlFor="search">
                 Search by Task:
                 <input id="search" type="text" onChange={handleSearch} />
-                <button id='add' onClick={addNew}>Add new</button>
+                {/* <button id='add' onClick={addNew}>Add new</button> */}
+                <button id='add'>
+                    <Link to="/new">
+                        Add new
+                    </Link>
+                </button>
+
                 <button id='clearCache' onClick={clearCache}>Clear Cache</button>
             </label>
             <Table data={data}>{(recordss) => (
