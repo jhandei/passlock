@@ -29,13 +29,6 @@ function Manager() {
             item.username.includes(search) | item.website.includes(search)
         ),
     };
-    
-    // const addNew = () => {
-    //     window.open("new");
-        // const newList = rowsData.concat({"website": "nothing.com", "username":"jhandei123@gmail.com", "password": "something4"});
-        // setRowsData(newList);
-        // localStorage.setItem("data", JSON.stringify(newList));
-    // }
 
     const clearCache = () => {
         localStorage.clear()

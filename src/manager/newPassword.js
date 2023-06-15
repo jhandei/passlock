@@ -22,12 +22,13 @@ const NewPassword = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        if(!(formdata.username && formdata.website && formdata.password)) {
+            return;
+        }
+
         if(localStorage.getItem("data")){
             localData = JSON.parse(localStorage.getItem("data"))
-        }else localData = []
-        //console.log(localData);
-        //console.log(formdata);
-        // localStorage.clear()
+        } else localData = []
 
         const data = localData.concat(formdata);
         console.log(data);
@@ -38,6 +39,8 @@ const NewPassword = () => {
             username:"",
             password:""
           });
+
+        window.open("..", "_self");
     }
 
   return (
