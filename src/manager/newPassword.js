@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-
+import { encrypt } from "./encryption";
 
 const NewPassword = () => {
-    const[formdata, setformdata] = useState([{
+    const[formdata, setformdata] = useState({
         website:"",
         username:"",
         password:""
-    }])
+    })
 
     let name, value;
 
@@ -30,6 +30,7 @@ const NewPassword = () => {
             localData = JSON.parse(localStorage.getItem("data"))
         } else localData = []
 
+        formdata.password = encrypt(formdata.password);
         const data = localData.concat(formdata);
         console.log(data);
         localStorage.setItem("data", JSON.stringify(data));

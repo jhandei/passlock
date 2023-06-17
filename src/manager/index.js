@@ -8,6 +8,8 @@ import { Table,
     Row,
     Cell } from '@table-library/react-table-library/table';
 
+import { encrypt, decrypt } from './encryption';
+
 
 function Manager() {
     const [search, setSearch] = React.useState('');
@@ -26,13 +28,18 @@ function Manager() {
 
     const data = {
         nodes: rowsData.filter((item) =>
-            item.username.includes(search) | item.website.includes(search)
+            item.username.includes(search) || item.website.includes(search)
         ),
     };
 
     const clearCache = () => {
         localStorage.clear()
         setRowsData([])
+    }
+
+    const handleShow = (password) => {
+        const main = prompt("Enter main password");
+        alert(decrypt(password));
     }
 
     return (
@@ -64,7 +71,7 @@ function Manager() {
                         <Row key={index} item={record}>
                             <Cell>{record.website}</Cell>
                             <Cell>{record.username}</Cell>
-                            <Cell>Show password</Cell>
+                            <Cell><input type="button" value="Show password" onClick={handleShow.bind(this, record.password)}></input></Cell>
                         </Row>
                     ))}
                 </Body>
