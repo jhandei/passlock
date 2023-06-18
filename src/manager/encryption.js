@@ -1,4 +1,5 @@
-const XChaCha20 = require('xchacha20-js');
+import { XChaCha20 } from 'xchacha20-js';
+
 
 let xcha20 = new XChaCha20;
 
