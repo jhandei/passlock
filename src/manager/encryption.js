@@ -1,19 +1,11 @@
-import { XChaCha20 } from 'xchacha20-js';
+var aes256 = require('aes256');
 
-
-let xcha20 = new XChaCha20;
-
-let key = Buffer.from('808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f', 'hex');
-let nonce = Buffer.from('404142434445464748494a4b4c4d4e4f5051525354555658', 'hex');
-
-let blockCounter = 1; // Optional, defaults to 1 per the RFC
-
-const encrypt = (message) => {
-    return xcha20.encrypt(message, nonce, key, blockCounter);
+const encrypt = (message, key) => {
+    return aes256.encrypt(key, Buffer.from(message)).toString("base64");
 }
 
-const decrypt = (cipherText) => {
-    return xcha20.decrypt(cipherText, nonce, key, blockCounter);
+const decrypt = (cipherText, key) => {
+    return aes256.decrypt(key, Buffer.from(cipherText, "base64"));;
 }
 
 export {encrypt, decrypt}

@@ -4,6 +4,7 @@ module.exports = function override (config, env) {
   console.log('override')
   let loaders = config.resolve
   loaders.fallback = {
+      "os": require.resolve("os-browserify/browser"),
       "fs": false,
       "tls": false,
       "net": false,
@@ -15,7 +16,9 @@ module.exports = function override (config, env) {
       "util": false,
       "crypto": require.resolve("crypto-browserify"),
       "buffer": require.resolve("buffer"),
-      "Buffer": require.resolve("buffer")
+      "Buffer": require.resolve("buffer"),
+      "process": require.resolve('process/browser'),
+
   }
 
   if (!config.plugins) {
@@ -24,6 +27,9 @@ module.exports = function override (config, env) {
   config.plugins.push(
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
+      process: 'process/browser',
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.MY_ENV': JSON.stringify(process.env.MY_ENV),
     }),
   );
   

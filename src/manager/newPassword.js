@@ -29,8 +29,9 @@ const NewPassword = () => {
         if(localStorage.getItem("data")){
             localData = JSON.parse(localStorage.getItem("data"))
         } else localData = []
-
-        formdata.password = encrypt(formdata.password);
+        
+        const key = prompt("Enter main password");
+        formdata.password = encrypt(formdata.password, key);
         const data = localData.concat(formdata);
         console.log(data);
         localStorage.setItem("data", JSON.stringify(data));

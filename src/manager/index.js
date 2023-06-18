@@ -8,7 +8,7 @@ import { Table,
     Row,
     Cell } from '@table-library/react-table-library/table';
 
-import { encrypt, decrypt } from './encryption';
+import { decrypt } from './encryption';
 
 
 function Manager() {
@@ -38,8 +38,8 @@ function Manager() {
     }
 
     const handleShow = (password) => {
-        const main = prompt("Enter main password");
-        alert(decrypt(password));
+        const key = prompt("Enter main password");
+        alert(decrypt(password, key));
     }
 
     return (
