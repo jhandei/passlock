@@ -9,14 +9,15 @@ import { Table,
     Cell } from '@table-library/react-table-library/table';
 
 import { decrypt } from './encryption';
+import { PasswordModel } from './password';
 
 
 function Manager() {
     const [search, setSearch] = React.useState('');
 
-    var initialList = [];
-    if(localStorage.getItem("data")){
-        initialList = JSON.parse(localStorage.getItem("data"))
+    var initialList : PasswordModel[]= [];
+    if(localStorage.getItem("data") != null){
+        initialList = JSON.parse(localStorage.getItem("data")!)
     }
     const [rowsData, setRowsData] = React.useState(initialList);
 

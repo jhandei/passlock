@@ -21,6 +21,7 @@
     "sodium-native": "^4.0.4",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
+    "typescript": "^5.1.6",
     "web-vitals": "^2.1.4",
     "xchacha20-js": "^0.3.1"
   },
