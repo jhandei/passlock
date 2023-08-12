@@ -5,7 +5,7 @@ import NewEntry from './manager/newPassword';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/passlock'>
       <Routes>
         <Route path="/" element={<Manager />}/>
           <Route index element={<Manager />} />
