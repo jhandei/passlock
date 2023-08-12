@@ -9,6 +9,7 @@ import { Table,
     Cell } from '@table-library/react-table-library/table';
 
 import { decrypt } from './encryption';
+import { exportFile, importFile } from './exim';
 
 
 function Manager() {
@@ -39,7 +40,20 @@ function Manager() {
 
     const handleShow = (password) => {
         const key = prompt("Enter main password");
+        if(key == null) {
+            alert("Please enter password")
+            return
+        }
         alert(decrypt(password, key));
+    }
+
+    const handleExport = () => {
+        exportFile(localStorage.data);
+    }
+
+    const handleImport = () => {
+        var myFile = document.getElementById("myFile");
+        importFile(myFile, setRowsData);
     }
 
     return (
@@ -47,7 +61,6 @@ function Manager() {
             <label htmlFor="search">
                 Search by Task:
                 <input id="search" type="text" onChange={handleSearch} />
-                {/* <button id='add' onClick={addNew}>Add new</button> */}
                 <button id='add'>
                     <Link to="/new">
                         Add new
@@ -55,8 +68,13 @@ function Manager() {
                 </button>
 
                 <button id='clearCache' onClick={clearCache}>Clear Cache</button>
+                <button id='exportFile' onClick={handleExport}>Export File</button>
+
+                <input id="myFile" type='file' accept="text/plain" name="files[]" />
+                <button id='exportFile' onClick={handleImport}>import File</button>
+
             </label>
-            <Table data={data}>{(recordss) => (
+            <Table data={data}>{(records) => (
                 <>
                 <Header>
                     <HeaderRow>
@@ -67,7 +85,7 @@ function Manager() {
                 </Header>
 
                 <Body>
-                    {recordss.map((record, index) => (
+                    {records.map((record, index) => (
                         <Row key={index} item={record}>
                             <Cell>{record.website}</Cell>
                             <Cell>{record.username}</Cell>

@@ -31,6 +31,10 @@ const NewPassword = () => {
         } else localData = []
         
         const key = prompt("Enter main password");
+        if(key == null) {
+            alert("Please enter password");
+            return;
+        }
         formdata.password = encrypt(formdata.password, key);
         const data = localData.concat(formdata);
         console.log(data);
