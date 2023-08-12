@@ -59,7 +59,7 @@ function Manager() {
     return (
         <>
             <label htmlFor="search">
-                Search by Task:
+                Search:
                 <input id="search" type="text" onChange={handleSearch} />
                 <button id='add'>
                     <Link to="/new">

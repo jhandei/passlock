@@ -2,7 +2,7 @@
   "name": "passlock-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jhandei.github.com/passlock",
+  "homepage": "https://www.jhandei.com/passlock/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@table-library/react-table-library": "^4.1.4",
@@ -27,11 +27,11 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
