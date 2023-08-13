@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { encrypt } from "./encryption";
+import { useNavigate } from "react-router";
 
 const NewPassword = () => {
     const[formdata, setformdata] = useState({
@@ -7,6 +8,8 @@ const NewPassword = () => {
         username:"",
         password:""
     })
+
+    const navigate = useNavigate();
 
     let name, value;
 
@@ -45,8 +48,7 @@ const NewPassword = () => {
             username:"",
             password:""
           });
-
-        window.open("..", "_self");
+        navigate('/', { replace: true });
     }
 
   return (

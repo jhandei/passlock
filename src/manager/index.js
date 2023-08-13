@@ -10,7 +10,7 @@ import { Table,
 
 import { decrypt } from './encryption';
 import { exportFile, importFile } from './exim';
-
+import styles from "../custom.css";
 
 function Manager() {
     const [search, setSearch] = React.useState('');
