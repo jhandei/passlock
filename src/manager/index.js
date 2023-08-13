@@ -11,6 +11,7 @@ import { Table,
 import { decrypt } from './encryption';
 import { exportFile, importFile } from './exim';
 import styles from "../custom.css";
+import Passwords from './passwords';
 
 function Manager() {
     const [search, setSearch] = React.useState('');
@@ -38,14 +39,7 @@ function Manager() {
         setRowsData([])
     }
 
-    const handleShow = (password) => {
-        const key = prompt("Enter main password");
-        if(key == null) {
-            alert("Please enter password")
-            return
-        }
-        alert(decrypt(password, key));
-    }
+ 
 
     const handleExport = () => {
         exportFile(localStorage.data);
@@ -74,27 +68,8 @@ function Manager() {
                 <button id='exportFile' onClick={handleImport}>import File</button>
 
             </label>
-            <Table data={data}>{(records) => (
-                <>
-                <Header>
-                    <HeaderRow>
-                        <HeaderCell>Website</HeaderCell>
-                        <HeaderCell>Username</HeaderCell>
-                        <HeaderCell>Password</HeaderCell>
-                    </HeaderRow>
-                </Header>
 
-                <Body>
-                    {records.map((record, index) => (
-                        <Row key={index} item={record}>
-                            <Cell>{record.website}</Cell>
-                            <Cell>{record.username}</Cell>
-                            <Cell><input type="button" value="Show password" onClick={handleShow.bind(this, record.password)}></input></Cell>
-                        </Row>
-                    ))}
-                </Body>
-                </>
-            )}</Table>
+            <Passwords data={data.nodes} />
         </>
     );
   }
