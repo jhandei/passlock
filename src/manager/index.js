@@ -1,12 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
-import { Table,
-    Header,
-    HeaderRow,
-    HeaderCell,
-    Body,
-    Row,
-    Cell } from '@table-library/react-table-library/table';
 
 import { decrypt } from './encryption';
 import { exportFile, importFile } from './exim';
