@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://www.jhandei.com/passlock/",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@table-library/react-table-library": "^4.1.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -50,8 +52,12 @@
     ]
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
     "gh-pages": "^6.0.0",
     "react-app-rewired": "^2.2.1",
+    "react-native-paper": "^5.10.3",
+    "react-native-web": "^0.19.8",
     "react-router-dom": "^6.12.1",
     "webpack": "^5.87.0",
     "webpack-cli": "^5.1.4"

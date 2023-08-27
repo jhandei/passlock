@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState } from "react";
+import { Menu, Appbar } from "react-native-paper";
 import { Link } from 'react-router-dom'
 
 import { decrypt } from './encryption';
@@ -7,13 +8,18 @@ import styles from "../custom.css";
 import Passwords from './passwords';
 
 function Manager() {
-    const [search, setSearch] = React.useState('');
+    const [search, setSearch] = useState('');
+    const [rowsData, setRowsData] = useState(initialList);
+    const [visible, setVisible] = useState(false);
 
     var initialList = [];
     if(localStorage.getItem("data")){
         initialList = JSON.parse(localStorage.getItem("data"))
     }
-    const [rowsData, setRowsData] = React.useState(initialList);
+    
+  
+    const openMenu = () => setVisible(true);
+    const closeMenu = () => setVisible(false);
 
     console.log(rowsData);
 
@@ -45,6 +51,21 @@ function Manager() {
 
     return (
         <>
+
+<Appbar.Header>
+      <Appbar.Content title="Search Bar" />
+      <Appbar.Action icon="magnify" onPress={() => {}} />
+      <Appbar.Action icon="dots-vertical" onPress={openMenu} />
+      <Menu
+        visible={visible}
+        onDismiss={closeMenu}
+        anchor={{ x: windowWidth, y: 100 }}
+      >
+        <Menu.Item onPress={() => {}} title="Item 1" />
+        <Menu.Item onPress={() => {}} title="Item 2" />
+        <Menu.Item onPress={() => {}} title="Item 3" />
+      </Menu>
+    </Appbar.Header>
             <label htmlFor="search">
                 Search:
                 <input id="search" type="text" onChange={handleSearch} />
