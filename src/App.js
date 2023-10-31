@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Manager />}/>
           <Route index element={<Manager />} />
-          <Route path="new" element={<NewEntry />} />
+          {/* <Route path="new" element={<NewEntry />} /> */}
       </Routes>
     </Router>
   );

@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.main {
+  max-width: 800px;
+  background-color: #fff;
+  padding: 25px;
+  border: 1px solid;
+  justify-content: center;
+  /* display: none; */
+}
+.closeModal{
+  background-color: #61dafb;
+  /* z-index: 5; */
+}
+.newPass{
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid;
+}
