@@ -53,7 +53,7 @@ const NewPassword = () => {
 
   return (
     <>
-        <form onSubmit={onSubmit}>
+        <form className="newPass" onSubmit={onSubmit}>
             <table>
                 <tr>
                     <th>Website</th>
