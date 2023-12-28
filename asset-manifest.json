@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/passlock/static/css/main.0184b8e1.css",
-    "main.js": "/passlock/static/js/main.815dea96.js",
+    "main.js": "/passlock/static/js/main.3ed6a063.js",
     "static/js/787.ea3d43bb.chunk.js": "/passlock/static/js/787.ea3d43bb.chunk.js",
     "index.html": "/passlock/index.html",
     "main.0184b8e1.css.map": "/passlock/static/css/main.0184b8e1.css.map",
-    "main.815dea96.js.map": "/passlock/static/js/main.815dea96.js.map",
+    "main.3ed6a063.js.map": "/passlock/static/js/main.3ed6a063.js.map",
     "787.ea3d43bb.chunk.js.map": "/passlock/static/js/787.ea3d43bb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0184b8e1.css",
-    "static/js/main.815dea96.js"
+    "static/js/main.3ed6a063.js"
   ]
 }
