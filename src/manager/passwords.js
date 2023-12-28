@@ -1,7 +1,7 @@
 import React from 'react';
 import { decrypt } from './encryption';
 
-function Passwords(data) {
+const Passwords = ({data, onUpdate}) => {
     const handleShow = (password) => {
         const key = prompt("Enter main password");
         if(key == null) {
@@ -9,6 +9,13 @@ function Passwords(data) {
             return
         }
         alert(decrypt(password, key));
+    }
+
+    const deletePassword = (index, data) => {
+      if(window.confirm("Are you sure?") === true) {
+        data.splice(index, 1)
+        onUpdate(data)  
+      }
     }
 
     return (
@@ -23,11 +30,14 @@ function Passwords(data) {
             </tr>
           </thead>
           <tbody>
-            {data.data.map((item, index) => (
+            {data.map((item, index) => (
               <tr key={index}>
                 <td>{item.website}</td>
                 <td>{item.username}</td>
-                <td><input type="button" value="Show password" onClick={handleShow.bind(this, item.password)}></input></td>
+                <td>
+                  <input type="button" value="Show password" onClick={handleShow.bind(this, item.password)}></input>
+                  <input type="button" value="Delete password" onClick={deletePassword.bind(this, index, data)}></input>
+                </td>
               </tr>
             ))}
           </tbody>

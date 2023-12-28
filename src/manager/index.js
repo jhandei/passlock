@@ -15,8 +15,6 @@ function Manager() {
     }
     const [rowsData, setRowsData] = React.useState(initialList);
 
-    console.log(rowsData);
-
     const handleSearch = (event) => {
         setSearch(event.target.value);
     };
@@ -32,7 +30,10 @@ function Manager() {
         setRowsData([])
     }
 
- 
+    const handleUpdate = (data) => {
+        setRowsData(data)
+        localStorage.setItem("data", JSON.stringify(data));
+    }
 
     const handleExport = () => {
         exportFile(localStorage.data);
@@ -62,7 +63,7 @@ function Manager() {
 
             </label>
 
-            <Passwords data={data.nodes} />
+            <Passwords data={data.nodes} onUpdate={handleUpdate}/>
         </>
     );
   }
