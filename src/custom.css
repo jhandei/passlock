@@ -60,4 +60,83 @@ body {
     cursor: pointer;
   }
   
-  
+/** Modal CSS **/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position: fixed;
+  background: white;
+  width: auto;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+
+
+.container {
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="number"] {
+  width: 30%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form-group > [type="text"] {
+  width: 30%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin: 0px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #9fcfe2;
+  color: white;
+  cursor: pointer;
+}
+
+
+.form-group > label {
+  display: inline;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

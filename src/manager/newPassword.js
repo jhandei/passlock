@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { encrypt } from "./encryption";
 import { useNavigate } from "react-router";
+import GeneratePasswordModal from "./generatePassword";
 
 const NewPassword = () => {
     const[formdata, setformdata] = useState({
@@ -8,17 +9,29 @@ const NewPassword = () => {
         username:"",
         password:""
     })
+    
+    const[generatePassowordModal, setGeneratePasswordModal] = useState(false);
 
     const navigate = useNavigate();
 
-    let name, value;
-
     const handleChange = (e) => {
+        let name, value;
         // console.log(e.target.value)
         name= e.target.name;
         value= e.target.value;
 
         setformdata({...formdata, [name]:value})
+    }
+
+    const showGeneratePasswordModal = (e) => {
+        setGeneratePasswordModal(true)
+    }
+
+    const hideGeneratePasswordModal = (generatedPassword) => {
+        setGeneratePasswordModal(false)
+        if(generatedPassword){
+            setformdata({...formdata, password: generatedPassword})
+        }
     }
 
     let localData;
@@ -53,6 +66,7 @@ const NewPassword = () => {
 
   return (
     <>
+        {generatePassowordModal ? (<GeneratePasswordModal show={generatePassowordModal} handleClose={hideGeneratePasswordModal}/>) : null}
         <form onSubmit={onSubmit}>
             <table>
                 <tr>
@@ -80,15 +94,11 @@ const NewPassword = () => {
                     name="password" 
                     value={formdata.password}
                     onChange={handleChange} 
-                    /></td>
+                    /> <button id="generatePassword" onClick={showGeneratePasswordModal}> Generate </button> </td> 
                 </tr>
                 <tr>
                     <th>Submit</th>
-                    <td> <button 
-                    type="submit" 
-                    //value="Submit"
-                    //onClick={onSubmit}
-                    >
+                    <td> <button type="submit" >
                         Submit
                     </button>
                     </td>
