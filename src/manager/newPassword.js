@@ -53,7 +53,7 @@ const NewPassword = () => {
         }
         formdata.password = encrypt(formdata.password, key);
         const data = localData.concat(formdata);
-        console.log(data);
+        
         localStorage.setItem("data", JSON.stringify(data));
 
         setformdata({
