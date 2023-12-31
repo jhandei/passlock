@@ -28,8 +28,10 @@ function Manager() {
     };
 
     const handleDeleteAll = () => {
-        localStorage.clear()
-        setRowsData([])
+        if(window.confirm("Do you want to delete all records?") === true) {
+            localStorage.clear()
+            setRowsData([])
+        }
     }
 
     const handleUpdate = (data) => {
