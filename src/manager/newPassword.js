@@ -7,7 +7,8 @@ const NewPassword = () => {
     const[formdata, setformdata] = useState({
         website:"",
         username:"",
-        password:""
+        password:"",
+        passLength: false
     })
     
     const[generatePassowordModal, setGeneratePasswordModal] = useState(false);
@@ -53,13 +54,13 @@ const NewPassword = () => {
         }
         formdata.password = encrypt(formdata.password, key);
         const data = localData.concat(formdata);
-        console.log(data);
+        //console.log(data);
         localStorage.setItem("data", JSON.stringify(data));
 
         setformdata({
             website:"",
             username:"",
-            password:""
+            password:"",
           });
         navigate('/', { replace: true });
     }
@@ -89,18 +90,21 @@ const NewPassword = () => {
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <td><input 
-                    type="password" 
-                    name="password" 
-                    value={formdata.password}
-                    onChange={handleChange} 
-                    /> <button id="generatePassword" onClick={showGeneratePasswordModal}> Generate </button> </td> 
+                    <td>
+                        <input 
+                        type="password" 
+                        name="password" 
+                        value={formdata.password}
+                        onChange={handleChange} 
+                        /> 
+                        <button id="generatePassword" onClick={showGeneratePasswordModal}> Generate </button>
+                    </td> 
                 </tr>
                 <tr>
                     <th>Submit</th>
-                    <td> <button type="submit" >
-                        Submit
-                    </button>
+                    <td> 
+                        {/* {formdata.passLength && <button type="submit" >Submit</button>} */}
+                        <button type="submit"  >Submit</button>
                     </td>
                 </tr>
             </table>

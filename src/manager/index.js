@@ -15,7 +15,7 @@ function Manager() {
     }
     const [rowsData, setRowsData] = React.useState(initialList);
 
-    console.log(rowsData);
+    // console.log(rowsData);
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
