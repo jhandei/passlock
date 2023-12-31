@@ -5,6 +5,8 @@ import { decrypt } from './encryption';
 import { exportFile, importFile } from './exim';
 import styles from "../custom.css";
 import Passwords from './passwords';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAdd } from '@fortawesome/free-solid-svg-icons'
 
 function Manager() {
     const [search, setSearch] = React.useState('');
@@ -25,9 +27,11 @@ function Manager() {
         ),
     };
 
-    const clearCache = () => {
-        localStorage.clear()
-        setRowsData([])
+    const handleDeleteAll = () => {
+        if(window.confirm("Do you want to delete all records?") === true) {
+            localStorage.clear()
+            setRowsData([])
+        }
     }
 
     const handleUpdate = (data) => {
@@ -38,32 +42,34 @@ function Manager() {
     const handleExport = () => {
         exportFile(localStorage.data);
     }
-
-    const handleImport = () => {
-        var myFile = document.getElementById("myFile");
-        importFile(myFile, setRowsData);
-    }
+    
+    const handleImport = event => {
+        var hiddenFileInput = document.getElementById("myFile");
+        hiddenFileInput.click();
+    };
+    
+    const handleChange = event => {
+        const fileUploaded = event.target;
+        importFile(fileUploaded, setRowsData);
+    };
 
     return (
         <>
-            <label htmlFor="search">
-                Search:
-                <input id="search" type="text" onChange={handleSearch} />
-                <button id='add'>
+            <div style={{ width: "100%" }}>
+                <label htmlFor="search" style={{display: 'inline'}}>Search: </label>
+                <input id="search" type="text" onChange={handleSearch} placeholder='Search websites or username' 
+                style={{width: '68%'}} />
+                
+                <button id='add' style={{float: 'right'}}>
                     <Link to="/new">
-                        Add new
+                       <FontAwesomeIcon icon={faAdd} /> Add new Password
                     </Link>
                 </button>
+            </div>
+                
+            <Passwords data={data.nodes} onUpdate={handleUpdate} onImport={handleImport} onExport={handleExport} onDeleteAll={handleDeleteAll}/>
+            <input id="myFile" type='file' onChange={handleChange} accept="text/plain" name="files[]" style={{display: 'none'}} />
 
-                <button id='clearCache' onClick={clearCache}>Clear Cache</button>
-                <button id='exportFile' onClick={handleExport}>Export File</button>
-
-                <input id="myFile" type='file' accept="text/plain" name="files[]" />
-                <button id='exportFile' onClick={handleImport}>import File</button>
-
-            </label>
-
-            <Passwords data={data.nodes} onUpdate={handleUpdate}/>
         </>
     );
   }

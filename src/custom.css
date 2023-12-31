@@ -27,7 +27,7 @@ body {
   
   button a {
     text-decoration: none;
-    color: #fff;
+    color: black;
   }
   
   table {
@@ -122,16 +122,6 @@ input[type="number"] {
   border-radius: 4px;
   margin: 0px;
   border: 1px solid #ccc;
-}
-
-button {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: none;
-  background-color: #9fcfe2;
-  color: white;
-  cursor: pointer;
 }
 
 
