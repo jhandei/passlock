@@ -66,7 +66,6 @@ const NewPassword = () => {
 
   return (
     <>
-        {generatePassowordModal ? (<GeneratePasswordModal show={generatePassowordModal} handleClose={hideGeneratePasswordModal}/>) : null}
         <form onSubmit={onSubmit}>
             <table>
                 <tr>
@@ -80,28 +79,16 @@ const NewPassword = () => {
                 </tr>
                 <tr>
                     <th>Username</th>
-                    <td><input 
-                    type="text" 
-                    name="username" 
-                    value={formdata.username}
-                    onChange={handleChange}
-                    /></td>
+                    <td><input type="text" name="username" value={formdata.username} onChange={handleChange}/></td>
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <td><input 
-                    type="password" 
-                    name="password" 
-                    value={formdata.password}
-                    onChange={handleChange} 
-                    /> <button id="generatePassword" onClick={showGeneratePasswordModal}> Generate </button> </td> 
+                    <td><input type="password" name="password" value={formdata.password} onChange={handleChange}/> 
+                    <GeneratePasswordModal show={generatePassowordModal} handleClose={hideGeneratePasswordModal}/></td> 
                 </tr>
                 <tr>
                     <th>Submit</th>
-                    <td> <button type="submit" >
-                        Submit
-                    </button>
-                    </td>
+                    <td> <button type="submit" > Submit </button> </td>
                 </tr>
             </table>
         </form>

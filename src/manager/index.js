@@ -58,7 +58,7 @@ function Manager() {
             <div style={{ width: "100%" }}>
                 <label htmlFor="search" style={{display: 'inline'}}>Search: </label>
                 <input id="search" type="text" onChange={handleSearch} placeholder='Search websites or username' 
-                style={{width: '68%'}} />
+                style={{width: '67%'}} />
                 
                 <button id='add' style={{float: 'right'}}>
                     <Link to="/new">

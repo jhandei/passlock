@@ -33,18 +33,37 @@ const GeneratePasswordModal  = ({ handleClose, show, children }) => {
             password += allChars.substring(randomNumber, randomNumber +1);
         }        
         handleClose(password)
+        resetInputs()
     }
 
     const closeDialogue = (e) => {        
         handleClose("")
+        resetInputs()
+    }
+    
+    const resetInputs = () => {
+        document.getElementById("length").value = 12;
+        document.getElementById("include-smallcase").checked = true;
+        document.getElementById("include-uppercase").checked = true;
+        document.getElementById("include-numbers").checked = true;
+        document.getElementById("include-symbols").value = "!@#$%^&*()";
     }
 
     return (
-      <div className={showHideClassName}>
-        <section className="modal-main">
-        <div className="container">
-            <h1>Password Generator</h1>
-                <div className="form-group">
+    <div style={{display: "inline", paddingBlockStart: 10, paddingLeft: 10, paddingRight: 10, paddingBlockEnd: 10}}>
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generatePassword">
+        Generate Password
+      </button>
+      
+      <div className="modal fade" id="generatePassword" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Generate Password</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+            <div className="form-group">
                     <input type="number" id="length" placeholder="Enter length of password" min="1" max="128" defaultValue={12} required/>
                     <label htmlFor="length">Length of Password</label>
                 </div>
@@ -65,14 +84,14 @@ const GeneratePasswordModal  = ({ handleClose, show, children }) => {
                     <input type="text" id="include-symbols" placeholder="Enter required symbols" defaultValue="!@#$%^&*()" />
                     <label htmlFor="include-symbols">Include Symbols</label>
                 </div>
-                <button type="button" onClick={closeDialogue}>
-                    Close
-                </button>
-                <button type="button" onClick={generateStrongRandomPassword}>
-                    Generate
-                </button>
             </div>
-                </section>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" onClick={closeDialogue} data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary" onClick={generateStrongRandomPassword} data-bs-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>    
       </div>
     );
   };
