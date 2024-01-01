@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 
-import { decrypt } from './encryption';
 import { exportFile, importFile } from './exim';
 import styles from "../custom.css";
 import Passwords from './passwords';

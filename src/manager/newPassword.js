@@ -9,8 +9,6 @@ const NewPassword = () => {
         username:"",
         password:""
     })
-    
-    const[generatePassowordModal, setGeneratePasswordModal] = useState(false);
 
     const navigate = useNavigate();
 
@@ -23,12 +21,7 @@ const NewPassword = () => {
         setformdata({...formdata, [name]:value})
     }
 
-    const showGeneratePasswordModal = (e) => {
-        setGeneratePasswordModal(true)
-    }
-
-    const hideGeneratePasswordModal = (generatedPassword) => {
-        setGeneratePasswordModal(false)
+    const handleGeneratedPassword = (generatedPassword) => {
         if(generatedPassword){
             setformdata({...formdata, password: generatedPassword})
         }
@@ -84,7 +77,7 @@ const NewPassword = () => {
                 <tr>
                     <th>Password</th>
                     <td><input type="password" name="password" value={formdata.password} onChange={handleChange}/> 
-                    <GeneratePasswordModal show={generatePassowordModal} handleClose={hideGeneratePasswordModal}/></td> 
+                    <GeneratePasswordModal handleGeneratedPassword={handleGeneratedPassword}/></td> 
                 </tr>
                 <tr>
                     <th>Submit</th>
