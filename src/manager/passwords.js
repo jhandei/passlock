@@ -2,15 +2,29 @@ import React from 'react';
 import { decrypt } from './encryption';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faTrash, faUpload } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
 
 const Passwords = ({data, onUpdate, onImport, onExport, onDeleteAll}) => {
+    const [showPassModalData, setshowPassModalData] = useState("");
+    const [copied, setCopied] = useState(false);
+    const[showPassModal, setshowPassModal] = useState(false);
+    const[userPass, setUserPass] = useState("")
     const handleShow = (password) => {
         const key = prompt("Enter main password");
         if(key == null) {
             alert("Please enter password")
             return
         }
-        alert(decrypt(password, key));
+
+        setUserPass("" + decrypt(password, key))
+        setshowPassModal(!showPassModal);
+        // alert(decrypt(password, key));
+    }
+
+    const handlePassModal = () => {
+      setshowPassModal(!showPassModal);
     }
 
     const deletePassword = (index, data) => {
@@ -20,8 +34,14 @@ const Passwords = ({data, onUpdate, onImport, onExport, onDeleteAll}) => {
       }
     }
 
+    const handleCopied = () => {
+      setCopied(true)
+    }
+    console.log(copied)
+
+
     return (
-      <div>
+      <div className='password'>
         <h2 style={{display: 'inline', float: 'left'}}>Saved Passwords</h2>
         <div style={{display: 'inline', float: 'right', marginTop: 20}}>
           <FontAwesomeIcon icon={faDownload} onClick={onExport} style={{padding: 10}} title='Download Passwords'/>
@@ -50,6 +70,27 @@ const Passwords = ({data, onUpdate, onImport, onExport, onDeleteAll}) => {
                 </td>
               </tr>
             ))}
+
+            {showPassModal 
+            ?
+            <div className='passModal'>
+              <button className='passModalBtn' onClick={handlePassModal}>close</button>
+              <div className='pm-ic'>
+                <div className='pm-ic-child'>
+                    <h2>Password: </h2>
+                    <h2>{userPass}</h2>
+                    <CopyToClipboard text={userPass} onCopy={() => setCopied(true)}>
+                      <button className='spdBtn' onClick={handleCopied}>
+                        <FontAwesomeIcon icon={faCopy}/>
+                        {copied ? <span className='spdSpan'>Copied!</span> : ""}
+                      </button>
+                    </CopyToClipboard>
+                  </div>
+              </div>
+            </div>
+            :
+            null}
+
           </tbody>
         </table>
       </div>
@@ -57,4 +98,3 @@ const Passwords = ({data, onUpdate, onImport, onExport, onDeleteAll}) => {
   }
   
   export default Passwords;
-  

@@ -1,132 +1,202 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #root {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"], input[type="file"], button {
-    margin-right: 10px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  input[type="button"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="file"], button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button a {
+  text-decoration: none;
+  color: black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+input[type="button"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 /** Modal CSS **/
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+position: fixed;
+top: 0;
+left: 0;
+width:100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.6);
 }
 
 .modal-main {
-  position: fixed;
-  background: white;
-  width: auto;
-  height: auto;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+position: fixed;
+background: white;
+width: auto;
+height: auto;
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
 }
 
 .display-block {
-  display: block;
+display: block;
 }
 
 .display-none {
-  display: none;
+display: none;
 }
 
 
 
 .container {
-  width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+width: 400px;
+margin: auto;
+padding: 20px;
+background-color: #f5f5f5;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 30px;
+text-align: center;
+color: #333;
+margin-bottom: 30px;
 }
 .form-group {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 input[type="number"] {
-  width: 30%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+width: 30%;
+padding: 10px;
+font-size: 16px;
+border-radius: 4px;
+border: 1px solid #ccc;
 }
 
 .form-group > [type="text"] {
-  width: 30%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  margin: 0px;
-  border: 1px solid #ccc;
+width: 30%;
+padding: 10px;
+font-size: 16px;
+border-radius: 4px;
+margin: 0px;
+border: 1px solid #ccc;
 }
 
 
 .form-group > label {
-  display: inline;
-  margin-bottom: 10px;
-  margin-left: 10px;
+display: inline;
+margin-bottom: 10px;
+margin-left: 10px;
+}
+
+
+.showPassDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.spDiv{
+
+}
+.spDiv:hover{
+  cursor: pointer;
+}
+.spdBtn {
+  position: relative;
+}
+.spdSpan {
+  position: absolute;
+  color: #9fcfe2;
+  font-weight: bolder;
+  top: -52%;
+  left: -25%;
+}
+
+.password{
+/* position: relative; */
+}
+
+.passModal{
+z-index: 10;
+height: 100vh;
+width: 100vw;
+background-color: rgb(24,24,24, 0.5);
+position: absolute;
+top: 0%;
+left: 0%;
+padding: 1rem;
+/* transform: translate(-50%, 6%); */
+}
+.passModalBtn{
+padding: 2px;
+margin: 2px;
+cursor: pointer;
+color: #fff;
+background-color: #007bff;
+border: none;
+padding: 5px;
+font-weight: bold;
+}
+.pm-ic{
+height: 97vh;
+width: 100vw;
+position: relative;
+
+}
+.pm-ic-child {
+display: flex;
+width: 50vw;
+background-color: #fff;
+border: 1px solid;
+align-items: center;
+justify-content: space-evenly;
+/* margin: 60px; */
+padding: 1rem;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 }
