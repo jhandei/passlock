@@ -1,5 +1,4 @@
-const GeneratePasswordModal  = ({ handleClose, show, children }) => {
-    const showHideClassName = show ? "modal display-block" : "modal display-none";
+const GeneratePasswordModal  = ({ handleGeneratedPassword }) => {
 
     const numbers = "0123456789";
     const smallCaseChars = "abcdefghijklmnopqrstuvwxyz";
@@ -32,12 +31,12 @@ const GeneratePasswordModal  = ({ handleClose, show, children }) => {
             var randomNumber = Math.floor(Math.random() * allChars.length);
             password += allChars.substring(randomNumber, randomNumber +1);
         }        
-        handleClose(password)
+        handleGeneratedPassword(password)
         resetInputs()
     }
 
     const closeDialogue = (e) => {        
-        handleClose("")
+        handleGeneratedPassword("")
         resetInputs()
     }
     
