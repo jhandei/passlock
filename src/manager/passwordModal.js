@@ -6,7 +6,7 @@ import { decrypt } from './encryption';
 import { faCopy, faEye, faEyeDropper, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
-
+import { toast, Bounce } from 'react-toastify';
 
 const PasswordModal = ({show, handleClose, encryptedPassword}) => {
 
@@ -35,7 +35,17 @@ const PasswordModal = ({show, handleClose, encryptedPassword}) => {
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(password);
-        console.log("Password Copied");
+        toast.info('Copied!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
     }
 
     return (

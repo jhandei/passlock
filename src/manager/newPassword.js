@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { encrypt } from "./encryption";
 import { useNavigate } from "react-router";
 import GeneratePasswordModal from "./generatePassword";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { toast, Bounce } from 'react-toastify';
 
 const NewPassword = () => {
     const[formdata, setformdata] = useState({
@@ -25,6 +28,21 @@ const NewPassword = () => {
         if(generatedPassword){
             setformdata({...formdata, password: generatedPassword})
         }
+    }
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(formdata.password);
+        toast.info("Copied to clipboard", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
     }
 
     let localData;
@@ -76,7 +94,7 @@ const NewPassword = () => {
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <td><input type="password" name="password" value={formdata.password} onChange={handleChange}/> 
+                    <td><input type="password" name="password" value={formdata.password} onChange={handleChange}/> <FontAwesomeIcon style={{marginRight: 10, marginLeft: 10}} icon={faCopy} onClick={copyToClipboard}/> 
                     <GeneratePasswordModal handleGeneratedPassword={handleGeneratedPassword}/></td> 
                 </tr>
                 <tr>
