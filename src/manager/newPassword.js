@@ -27,6 +27,7 @@ const NewPassword = () => {
     const handleGeneratedPassword = (generatedPassword) => {
         if(generatedPassword){
             setformdata({...formdata, password: generatedPassword})
+            copyToClipboard();
         }
     }
 
